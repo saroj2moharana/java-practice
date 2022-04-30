@@ -25,4 +25,23 @@ public class ListUtil {
 
         return head;
     }
+
+    public static SingleListNode getDefaultDupSingleListNode(){
+        SingleListNode head = new SingleListNode();
+        head.data = 10;
+
+        SingleListNode n1 = new SingleListNode(20);
+        head.nextNode = n1;
+
+        SingleListNode n2 = new SingleListNode(30);
+        n1.nextNode = n2;
+
+        SingleListNode n3 = new SingleListNode(20);
+        n2.nextNode = n3;
+
+        SingleListNode n4 = new SingleListNode(50);
+        n3.nextNode = n4;
+
+        return head;
+    }
 }
