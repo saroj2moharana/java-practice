@@ -5,11 +5,34 @@ package com.skm.algo.problemsoliving;
  */
 public class MaximumTrapWater {
     public static void main(String[] args) {
-        int[] arr = {0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1};
-        //int[] arr = {3,0,2,0,4};
+        //int[] arr = {0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1};
+        int[] arr = {4,2,0,6,2,3,5}; // it should be 11
+        //int[] arr = {2,4,0,1,5,6}; // it should be 7
         int n = arr.length;
-        System.out.print(maxWater(arr, n));
+        System.out.println(maxWater(arr, n));
+        System.out.println(getMaxWater(arr));
     }
+
+    /**
+     * This is most optimized code...
+     * @param a
+     * @return
+     */
+    public static int getMaxWater(int a[]){
+        int l = a.length;
+        int lMax = a[0];
+        int rMax = a[l-1];
+        int tot = 0;
+        int i=1;
+        while(i < l-1){
+            if(lMax < a[i]) lMax = a[i];
+            else if(rMax < a[i]) rMax = a[i];
+            else tot += (Math.min(lMax,rMax) - a[i]);
+            i++;
+        }
+        return tot;
+    }
+
     static int maxWater(int[] arr, int n){
         // indices to traverse the array
         int left = 0;
