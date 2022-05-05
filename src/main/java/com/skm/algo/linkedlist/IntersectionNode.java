@@ -37,32 +37,34 @@ public class IntersectionNode {
          * 2. Iterate bigger one till getting both lists same size...
          * 3. then check each node, if equal then return that node...
          */
-        int l1 = 0, l2 = 0;
-        SingleListNode t1 = n1;
-        SingleListNode t2 = n2;
-        while(n1 != null){
-            l1++;
-            n1 = n1.nextNode;
-        }
-        while (n2 != null){
-            l2++;
-            n2 = n2.nextNode;
-        }
+        int l1 = getLength(n1);
+        int l2 = getLength(n2);
         int dif = l1-l2;
         if(dif > 0){
             while(dif>0){
-                t1 = t1.nextNode;
+                n1 = n1.nextNode;
                 dif--;
             }
         }else if(dif < 0){
-            t2 = t2.nextNode;
+            while(dif<0){
+                n2 = n2.nextNode;
+                dif++;
+            }
         }
-        while(t1 != null){
-            if(t1 == t2) return t1;
-            t1 = t1.nextNode;
-            t2 = t2.nextNode;
+        while(n1 != null){
+            if(n1 == n2) return n1;
+            n1 = n1.nextNode;
+            n2 = n2.nextNode;
         }
-
         return null;
+    }
+
+    public static int getLength(SingleListNode n){
+        int l = 0;
+        while(n != null){
+            l++;
+            n = n.nextNode;
+        }
+        return l;
     }
 }
