@@ -8,9 +8,19 @@ public class Node {
     public Node leftNode;
     public Node rightNode;
     public int level;
+    public boolean visited;
+
+    public boolean isVisited() {
+        return visited;
+    }
+
+    public void setVisited(boolean visited) {
+        this.visited = visited;
+    }
 
     public Node(int data){
         this.data = data;
+        //this.visited = false;
     }
 
     public Node(){}
@@ -61,6 +71,7 @@ public class Node {
         sb.append(",level=").append(level);
         sb.append(", left=").append(leftNode);
         sb.append(", right=").append(rightNode);
+        sb.append(", visited=").append(visited);
         sb.append('}');
         return sb.toString();
     }

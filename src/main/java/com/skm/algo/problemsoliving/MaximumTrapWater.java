@@ -6,8 +6,9 @@ package com.skm.algo.problemsoliving;
 public class MaximumTrapWater {
     public static void main(String[] args) {
         //int[] arr = {0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1};
-        int[] arr = {4,2,0,6,2,3,5}; // it should be 11
+        //int[] arr = {4,2,0,6,2,3,5}; // it should be 11
         //int[] arr = {2,4,0,1,5,6}; // it should be 7
+        int arr[] = {0,1,0,2,1,0,1,3,2,1,2,1};
         int n = arr.length;
         System.out.println(maxWater(arr, n));
         System.out.println(getMaxWater(arr));
@@ -19,17 +20,36 @@ public class MaximumTrapWater {
      * @return
      */
     public static int getMaxWater(int a[]){
-        int l = a.length;
-        int lMax = a[0];
-        int rMax = a[l-1];
+        int n = a.length;
+        //left pointer...
+        int l = 0;
+        //right pointer...
+        int r = n-1;
+        //left max value...
+        int lmax = a[l];
+        //right max value...
+        int rmax = a[r];
+        //total occupied water...
         int tot = 0;
-        int i=1;
-        while(i < l-1){
-            if(lMax < a[i]) lMax = a[i];
-            else if(rMax < a[i]) rMax = a[i];
-            else tot += (Math.min(lMax,rMax) - a[i]);
-            i++;
+
+        //loop will continue till left pointer reaches to right pointer...
+        while(l<=r){
+            //check left side...
+            //make sure left element had to lesser or equal to right then perform left operation...
+            if(a[l]<=a[r]){
+                //next we have to check whether current element is lesser to lmax
+                if(lmax > a[l]) tot += (lmax - a[l]);
+                else lmax = a[l]; //then new value should be lmax...
+                //after all we have to increase left pointer...
+                l++;
+            }else{// this is right side calculation... and this will continue right element is greater to left element...
+                if(rmax > a[r]) tot += (rmax - a[r]);
+                else rmax = a[r];
+                //after all we have to decrease right pointer...
+                r--;
+            }
         }
+
         return tot;
     }
 
