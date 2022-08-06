@@ -37,10 +37,10 @@ public class MinimumPlatforms {
         int i=0,j=0;
         //Loop arrival timings...
         while(i<arr.length && j <dep.length){
-            if(arr[i]<dep[j]){
+            if(arr[i]<=dep[j]){
                 i++;
                 totalPlatforms++;
-            }else if(arr[i] >= dep[j]){//we can ignore condition here as its else block...
+            }else{
                 j++;
                 totalPlatforms--;
             }
