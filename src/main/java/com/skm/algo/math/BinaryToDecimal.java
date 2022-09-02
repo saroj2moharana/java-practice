@@ -19,7 +19,7 @@ public class BinaryToDecimal {
     }*/
 
     public static int covertToDecimal(int n){
-        if(n == 0 || n==1) return 1;
+        if(n == 0 || n==1) return n;
         int r = 0;
         int i = 0;
         while(n>0){
