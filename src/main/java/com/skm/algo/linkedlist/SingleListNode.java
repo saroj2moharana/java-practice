@@ -33,7 +33,7 @@ public class SingleListNode {
     public String toString() {
         final StringBuilder sb = new StringBuilder("");
         sb.append("data=").append(data);
-        sb.append(" --> ").append(nextNode);
+        //sb.append(" --> ").append(nextNode);
         return sb.toString();
     }
 }

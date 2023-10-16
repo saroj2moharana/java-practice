@@ -17,19 +17,46 @@ public class LinkedListLoopDetect {
         singleListNode.getNextNode().setNextNode(new SingleListNode(4));//2-->3-->4
         singleListNode.getNextNode().getNextNode().setNextNode(new SingleListNode(5));//2-->3-->4-->5
         singleListNode.getNextNode().getNextNode().getNextNode().setNextNode(singleListNode3);//2-->3-->4-->5-->3
-        System.out.println(singleListNode);
+        //System.out.println(singleListNode);
         //detectLoop(singleListNode);
+        detectLoopUsingFast(singleListNode);
     }
     public static void detectLoop(SingleListNode singleListNode){
         HashSet<SingleListNode> nodeVisited = new LinkedHashSet<>();
         while(singleListNode != null){
             if(nodeVisited.contains(singleListNode)){
-                System.out.println("Found Loop at:"+singleListNode);
+                System.out.println("Found Loop at:"+singleListNode.data);
                 break;
             }
                 nodeVisited.add(singleListNode);
 
             singleListNode = singleListNode.getNextNode();
         }
+    }
+
+    public static void detectLoopUsingFast(SingleListNode head){
+        SingleListNode meetNode = meetNode(head);
+        if(meetNode != null){
+            SingleListNode prev = head;
+            while(head != meetNode){
+                head = head.nextNode;
+                prev = meetNode;
+                meetNode = meetNode.nextNode;
+            }
+            System.out.println("Loop Detect at:"+prev.data);
+            return;
+        }
+        System.out.println("There is no loop detect");
+
+    }
+    public static SingleListNode meetNode(SingleListNode head){
+        SingleListNode slow = head;
+        SingleListNode fast = head;
+        while(fast != null && fast.nextNode != null){
+            slow = slow.nextNode;
+            fast = fast.nextNode.nextNode;
+            if(slow == fast) return slow;
+        }
+        return null;
     }
 }
