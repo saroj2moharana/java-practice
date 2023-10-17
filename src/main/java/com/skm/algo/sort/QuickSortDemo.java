@@ -29,9 +29,10 @@ public class QuickSortDemo {
                 start++;
             while(a[end] > pivot)
                 end--;
-            if(start<end)
+            if(a[start]>a[end] && start<end)
                 swap(a, start, end);
         }
+        //at last swap lb with end to get proper pivot element index...
         swap(a, lb, end);
         return end;
     }

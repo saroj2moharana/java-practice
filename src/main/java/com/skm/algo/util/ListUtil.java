@@ -44,4 +44,12 @@ public class ListUtil {
 
         return head;
     }
+
+    public static void displayNodes(SingleListNode node){
+        while(node != null){
+            System.out.print(node.data+"-->");
+            node = node.nextNode;
+        }
+        System.out.print("null");
+    }
 }
