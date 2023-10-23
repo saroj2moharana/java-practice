@@ -32,7 +32,7 @@ public class MedianOfTwoSortedArray {
                 c[mi++] = b[i2++];
             }
         }
-        //System.out.println("i1:"+i1+",i2:"+i2);
+        System.out.println("i1:"+i1+",i2:"+i2);
         while(i1<l1){
             c[mi++] = a[i1++];
         }
