@@ -15,6 +15,8 @@ public class SubArrayWithGivenSum {
                 95,104,12,123,134};
        List<Integer> list = subarraySum(a,a.length,468);
        System.out.println(list);
+        list = subarraySumOptimized(a,a.length,468);
+        System.out.println(list);
     }
     static ArrayList<Integer> subarraySum(int[] arr, int n, int s)
     {
@@ -37,5 +39,26 @@ public class SubArrayWithGivenSum {
         }
         if(end == -1) return (new ArrayList<>(Arrays.asList(new Integer[]{end})));
         return (new ArrayList<>(Arrays.asList(new Integer[]{++start,++end})));
+    }
+
+    //By using below method time-complexity would be O(n)...
+    static ArrayList<Integer> subarraySumOptimized(int[] arr, int n, int s){
+        if(s == arr[0]) return (new ArrayList<>(Arrays.asList(new Integer[]{1,1})));
+        // Your code here
+        int sum = 0;
+        int start = 0;
+        int end = 0;
+        while(start<=end){
+            //System.out.println("start:"+start+",end:"+end+",sum:"+sum);
+            if(sum<s && end<n){
+                sum += arr[end++];
+            }else if(sum>s){
+                sum -= arr[start++];
+            }
+            if(sum == s) break;
+        }
+        //System.out.println(sum);
+        if(sum != s) return (new ArrayList<>(Arrays.asList(new Integer[]{-1})));
+        return (new ArrayList<>(Arrays.asList(new Integer[]{++start,end})));
     }
 }
