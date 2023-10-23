@@ -1,2 +1,7 @@
 /target/
+*/target/**
+**/META-INF/
 .idea
+*.iws
+*.iml
+*.ipr
