@@ -8,6 +8,14 @@ public class Fibonacci {
         int res = nthFibonacci(14521);
         System.out.println(res);
     }
+    static int nthFibonacci(){
+        int n = 5;
+        for(int i=1; i<n; i++){
+            System.out.println(i);
+            i = i+1;
+        }
+        return 0;
+    }
     static int nthFibonacci(int n){
         // code here
         if(n>0 && n<=100000){
